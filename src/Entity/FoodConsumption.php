@@ -2,20 +2,23 @@
 
 namespace App\Entity;
 
-use App\Repository\VeterinaryReportRepository;
+use App\Repository\FoodConsumptionRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: VeterinaryReportRepository::class)]
-class VeterinaryReport
+#[ORM\Entity(repositoryClass: FoodConsumptionRepository::class)]
+class FoodConsumption
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 50)]
-    private ?string $etat = null;
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $date = null;
+
+    #[ORM\Column(type: Types::TIME_MUTABLE)]
+    private ?\DateTimeInterface $heure = null;
 
     #[ORM\Column(length: 100)]
     private ?string $nourriture = null;
@@ -23,17 +26,11 @@ class VeterinaryReport
     #[ORM\Column]
     private ?int $quantite = null;
 
-    #[ORM\Column]
-    private ?\DateTimeInterface $datePassage = null;
-
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $details = null;
-
-    #[ORM\ManyToOne(inversedBy: 'veterinaryReports')]
+    #[ORM\ManyToOne(inversedBy: 'foodConsumptions')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Animal $animal = null;
 
-    #[ORM\ManyToOne(inversedBy: 'veterinaryReports')]
+    #[ORM\ManyToOne(inversedBy: 'foodConsumptions')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
@@ -42,14 +39,25 @@ class VeterinaryReport
         return $this->id;
     }
 
-    public function getEtat(): ?string
+    public function getDate(): ?\DateTimeInterface
     {
-        return $this->etat;
+        return $this->date;
     }
 
-    public function setEtat(string $etat): static
+    public function setDate(\DateTimeInterface $date): static
     {
-        $this->etat = $etat;
+        $this->date = $date;
+        return $this;
+    }
+
+    public function getHeure(): ?\DateTimeInterface
+    {
+        return $this->heure;
+    }
+
+    public function setHeure(\DateTimeInterface $heure): static
+    {
+        $this->heure = $heure;
         return $this;
     }
 
@@ -72,28 +80,6 @@ class VeterinaryReport
     public function setQuantite(int $quantite): static
     {
         $this->quantite = $quantite;
-        return $this;
-    }
-
-    public function getDatePassage(): ?\DateTimeInterface
-    {
-        return $this->datePassage;
-    }
-
-    public function setDatePassage(\DateTimeInterface $datePassage): static
-    {
-        $this->datePassage = $datePassage;
-        return $this;
-    }
-
-    public function getDetails(): ?string
-    {
-        return $this->details;
-    }
-
-    public function setDetails(?string $details): static
-    {
-        $this->details = $details;
         return $this;
     }
 

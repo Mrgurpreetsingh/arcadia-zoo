@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AnimalRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -27,6 +29,18 @@ class Animal
     #[ORM\JoinColumn(nullable: false)]
     private ?Habitat $habitat = null;
 
+    #[ORM\OneToMany(mappedBy: 'animal', targetEntity: VeterinaryReport::class)]
+    private Collection $veterinaryReports;
+
+    #[ORM\OneToMany(mappedBy: 'animal', targetEntity: FoodConsumption::class)]
+    private Collection $foodConsumptions;
+
+    public function __construct()
+    {
+        $this->veterinaryReports = new ArrayCollection();
+        $this->foodConsumptions = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -40,7 +54,6 @@ class Animal
     public function setPrenom(string $prenom): static
     {
         $this->prenom = $prenom;
-
         return $this;
     }
 
@@ -52,7 +65,6 @@ class Animal
     public function setRace(string $race): static
     {
         $this->race = $race;
-
         return $this;
     }
 
@@ -64,7 +76,6 @@ class Animal
     public function setImages(?string $images): static
     {
         $this->images = $images;
-
         return $this;
     }
 
@@ -75,7 +86,54 @@ class Animal
 
     public function setHabitat(Habitat $habitat): static
     {
-    $this->habitat = $habitat;
-    return $this;
+        $this->habitat = $habitat;
+        return $this;
+    }
+
+    public function getVeterinaryReports(): Collection
+    {
+        return $this->veterinaryReports;
+    }
+
+    public function addVeterinaryReport(VeterinaryReport $veterinaryReport): static
+    {
+        if (!$this->veterinaryReports->contains($veterinaryReport)) {
+            $this->veterinaryReports->add($veterinaryReport);
+            $veterinaryReport->setAnimal($this);
+        }
+        return $this;
+    }
+
+    public function removeVeterinaryReport(VeterinaryReport $veterinaryReport): static
+    {
+        if ($this->veterinaryReports->removeElement($veterinaryReport)) {
+           // if ($veterinaryReport->getAnimal() === $this) {
+           //     $veterinaryReport->setAnimal(null);
+           // }
+        }
+        return $this;
+    }
+
+    public function getFoodConsumptions(): Collection
+    {
+        return $this->foodConsumptions;
+    }
+
+    public function addFoodConsumption(FoodConsumption $foodConsumption): static
+    {
+        if (!$this->foodConsumptions->contains($foodConsumption)) {
+            $this->foodConsumptions->add($foodConsumption);
+            $foodConsumption->setAnimal($this);
+        }
+        return $this;
+    }
+
+    public function removeFoodConsumption(FoodConsumption $foodConsumption): static
+    {
+        if ($this->foodConsumptions->removeElement($foodConsumption)) {
+           // if ($foodConsumption->getAnimal() === $this) {
+          //  }
+        }
+        return $this;
     }
 }

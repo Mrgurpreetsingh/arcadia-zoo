@@ -138,9 +138,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeVeterinaryReport(VeterinaryReport $veterinaryReport): static
     {
         if ($this->veterinaryReports->removeElement($veterinaryReport)) {
-            if ($veterinaryReport->getUser() === $this) {
-                $veterinaryReport->setUser(null);
-            }
+          //  if ($veterinaryReport->getUser() === $this) {
+         //      $veterinaryReport->setUser(null);
+          //  }
         }
         return $this;
     }
@@ -162,9 +162,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeFoodConsumption(FoodConsumption $foodConsumption): static
     {
         if ($this->foodConsumptions->removeElement($foodConsumption)) {
-            if ($foodConsumption->getUser() === $this) {
-                $foodConsumption->setUser(null);
-            }
+        //    if ($foodConsumption->getUser() === $this) {
+         //       $foodConsumption->setUser(null);
+         //   }
         }
         return $this;
     }

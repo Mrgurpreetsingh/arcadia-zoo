@@ -97,10 +97,13 @@ class Habitat
     public function removeAnimal(Animal $animal): static
     {
         if ($this->animals->removeElement($animal)) {
+            // Supprimer l'animal de la base de données si nécessaire
+        // Note : Assurez-vous que cela correspond à votre logique métier
+        // Si vous ne voulez pas supprimer, laissez cette partie vide ou gérez autrement
             // set the owning side to null (unless already changed)
-            if ($animal->getHabitat() === $this) {
-                $animal->setHabitat(null);
-            }
+        //    if ($animal->getHabitat() === $this) {
+        //        $animal->setHabitat(null);
+        //   }
         }
 
         return $this;
