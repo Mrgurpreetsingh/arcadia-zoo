@@ -1,16 +1,29 @@
 # see https://symfony.com/doc/current/reference/configuration/framework.html
 framework:
     secret: '%env(APP_SECRET)%'
-    #csrf_protection: true
+    
+    # csrf_protection: true
+    # Active la protection CSRF (désactivée ici pour l'instant)
 
     # Note that the session will be started ONLY if you read or write from it.
     session: true
+    # La session ne démarre que si elle est utilisée (lecture ou écriture)
 
-    #esi: true
-    #fragments: true
+    # esi: true
+    # Active Edge Side Includes (pour les caches HTTP avancés)
+
+    # fragments: true
+    # Permet de gérer les fragments de pages (ex: rendering partiel dans les templates)
+
+    http_client:
+        default_options:
+            # Chemin du certificat CA pour valider les connexions HTTPS
+            cafile: "C:/php/cacert.pem"
+        
 
 when@test:
     framework:
         test: true
         session:
             storage_factory_id: session.storage.factory.mock_file
+        # Utilisation d’un stockage de session factice pour les tests
