@@ -9,10 +9,17 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class TestLoggerController extends AbstractController
 {
-    #[Route('/test-logger', name: 'test_logger')]
-    public function index(LoggerInterface $logger): Response
+    private $logger;
+
+    public function __construct(LoggerInterface $logger)
     {
-        $logger->debug('Test logger message', [], 'security');
+        $this->logger = $logger;
+    }
+
+    #[Route('/test-logger', name: 'test_logger')]
+    public function index(): Response
+    {
+        $this->logger->debug('Test logger message', [], 'security');
         return new Response('Logger test executed. Check var/log/security.log.');
     }
 }

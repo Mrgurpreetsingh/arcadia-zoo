@@ -14,3 +14,7 @@ services:
     App\Controller\TestLoggerController:
         arguments:
             $logger: '@monolog.logger.security'
+
+    App\Security\AppAuthenticator:
+        arguments:
+            $logger: '@monolog.logger.security'

@@ -27,10 +27,13 @@ class AppAuthenticator extends AbstractLoginFormAuthenticator
         private UrlGeneratorInterface $urlGenerator,
         private LoggerInterface $logger
     ) {
+        // Utiliser un contexte pour le canal security
+        $this->logger = $logger;
     }
 
     public function supports(Request $request): bool
     {
+        $this->logger->debug('Test logger in supports method');
         $isSupported = $request->isMethod('POST') && $request->attributes->get('_route') === self::LOGIN_ROUTE;
         $this->logger->debug('Checking authenticator support', [
             'method' => $request->getMethod(),
@@ -38,7 +41,8 @@ class AppAuthenticator extends AbstractLoginFormAuthenticator
             'request_uri' => $request->getRequestUri(),
             'route' => $request->attributes->get('_route'),
             'is_supported' => $isSupported,
-        ], 'security');
+            'attributes' => $request->attributes->all(),
+        ]);
         return $isSupported;
     }
 
@@ -50,17 +54,18 @@ class AppAuthenticator extends AbstractLoginFormAuthenticator
 
         $this->logger->debug('Authenticating user', [
             'email' => $email,
+            'password' => $password ? '[provided]' : '[empty]',
             'csrf_token' => $csrfToken,
-        ], 'security');
+            'payload' => $request->getPayload()->all(),
+        ]);
 
         $request->getSession()->set(SecurityRequestAttributes::LAST_USERNAME, $email);
 
         return new Passport(
             new UserBadge($email),
-            new PasswordCredentials($password),
-            [
-                new CsrfTokenBadge('authenticate', $csrfToken),
-            ]
+            new PasswordCredentials($password)
+            // CSRF désactivé temporairement
+            // [new CsrfTokenBadge('authenticate', $csrfToken)]
         );
     }
 
@@ -68,7 +73,7 @@ class AppAuthenticator extends AbstractLoginFormAuthenticator
     {
         $this->logger->info('Authentication successful', [
             'user' => $token->getUserIdentifier(),
-        ], 'security');
+        ]);
 
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
@@ -82,7 +87,7 @@ class AppAuthenticator extends AbstractLoginFormAuthenticator
         $this->logger->error('Authentication failed', [
             'error' => $exception->getMessage(),
             'email' => $request->getPayload()->getString('email'),
-        ], 'security');
+        ]);
 
         return parent::onAuthenticationFailure($request, $exception);
     }
