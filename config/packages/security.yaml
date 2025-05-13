@@ -10,18 +10,28 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+        login:
+            pattern: ^/login$
+            security: false
         main:
+            pattern: ^/
             lazy: true
             provider: app_user_provider
+            custom_authenticator: App\Security\AppAuthenticator
             logout:
                 path: app_logout
                 target: app_home
-            custom_authenticator: App\Security\AppAuthenticator
+            entry_point: App\Security\AppAuthenticator
+            login_throttling:
+                max_attempts: 5
+                interval: '15 minutes'
     access_control:
+        - { path: ^/login$, roles: PUBLIC_ACCESS }
+        - { path: ^/$, roles: PUBLIC_ACCESS }
+        - { path: ^/home$, roles: PUBLIC_ACCESS }
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/vet, roles: ROLE_VET }
         - { path: ^/employee, roles: ROLE_EMPLOYEE }
-        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     role_hierarchy:
         ROLE_ADMIN: [ROLE_VET, ROLE_EMPLOYEE]
         ROLE_VET: [ROLE_EMPLOYEE]
