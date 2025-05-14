@@ -23,12 +23,13 @@ class Review
     #[ORM\Column]
     private ?bool $valide = false;
 
-    #[ORM\Column]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $dateCreation = null;
 
     #[ORM\ManyToOne(inversedBy: 'reviews')]
     private ?User $user = null;
 
+    // Getters et setters (inchangés)
     public function getId(): ?int
     {
         return $this->id;

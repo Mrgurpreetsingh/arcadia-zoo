@@ -22,8 +22,10 @@ class DashboardController extends AbstractDashboardController
 {
     public function index(): Response
     {
-        // Rendre un template personnalisé pour le tableau de bord
-        return $this->render('admin/dashboard.html.twig');
+        return $this->redirectToRoute('admin', [
+        'crudControllerFqcn' => \App\Controller\Admin\ReviewCrudController::class,
+        'crudAction' => 'index',
+    ]);
     }
 
     public function configureDashboard(): Dashboard
@@ -36,14 +38,6 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Animaux', 'fas fa-paw', Animal::class);
-        yield MenuItem::linkToCrud('Habitats', 'fas fa-tree', Habitat::class);
-        yield MenuItem::linkToCrud('Services', 'fas fa-concierge-bell', Service::class);
-        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-users', User::class);
         yield MenuItem::linkToCrud('Avis', 'fas fa-star', Review::class);
-        yield MenuItem::linkToCrud('Consommation Alimentaire', 'fas fa-utensils', FoodConsumption::class);
-        yield MenuItem::linkToCrud('Rapports Vétérinaires', 'fas fa-stethoscope', VeterinaryReport::class);
-        yield MenuItem::linkToCrud('Demandes de Contact', 'fas fa-envelope', ContactRequest::class);
-        yield MenuItem::linkToCrud('Consultations Animaux', 'fas fa-clipboard-check', AnimalConsultation::class);
     }
 }

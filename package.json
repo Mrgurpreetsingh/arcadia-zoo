@@ -1,0 +1,40 @@
+{
+    "devDependencies": {
+        "@babel/core": "^7.27.1",
+        "@babel/preset-env": "^7.27.2",
+        "@fortawesome/fontawesome-free": "^6.7.2",
+        "@symfony/webpack-encore": "^5.1.0",
+        "babel-loader": "^9.2.1",
+        "bootstrap": "^5.3.6",
+        "core-js": "3.38",
+        "regenerator-runtime": "^0.13.9",
+        "webpack": "^5.74.0",
+        "webpack-cli": "^5.1.0"
+    },
+    "license": "UNLICENSED",
+    "private": true,
+    "scripts": {
+        "dev-server": "encore dev-server",
+        "dev": "encore dev",
+        "watch": "encore dev --watch",
+        "build": "encore production --progress"
+    },
+    "name": "arcadia-zoo",
+    "version": "1.0.0",
+    "description": "",
+    "main": "webpack.config.js",
+    "directories": {
+        "test": "tests"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Mrgurpreetsingh/arcadia-zoo.git"
+    },
+    "keywords": [],
+    "author": "",
+    "type": "module",
+    "bugs": {
+        "url": "https://github.com/Mrgurpreetsingh/arcadia-zoo/issues"
+    },
+    "homepage": "https://github.com/Mrgurpreetsingh/arcadia-zoo#readme"
+}

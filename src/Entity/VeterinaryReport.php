@@ -23,7 +23,7 @@ class VeterinaryReport
     #[ORM\Column]
     private ?int $quantite = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $datePassage = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
