@@ -2,30 +2,32 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Review;
+use App\Entity\VeterinaryReport;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 
-class ReviewCrudController extends AbstractCrudController
+class VeterinaryReportCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Review::class;
+        return VeterinaryReport::class;
     }
 
     public function configureFields(string $pageName): iterable
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('pseudo', 'Pseudo'),
-            TextEditorField::new('commentaire', 'Commentaire'),
-            BooleanField::new('valide', 'Validé'),
-            DateTimeField::new('dateCreation', 'Date de création'),
+            TextField::new('etat', 'État'),
+            TextField::new('nourriture', 'Nourriture'),
+            IntegerField::new('quantite', 'Quantité'),
+            DateTimeField::new('datePassage', 'Date de passage'),
+            TextEditorField::new('details', 'Détails'),
+            AssociationField::new('animal', 'Animal'),
             AssociationField::new('user', 'Utilisateur'),
         ];
     }

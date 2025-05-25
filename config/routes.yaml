@@ -1,5 +1,4 @@
-controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
+App\Controller\Admin:
+    resource: ../src/Controller/Admin/
     type: attribute
+    # prefix: /admin  <-- supprimer ce prefix

@@ -27,6 +27,7 @@ class Review
     private ?\DateTimeInterface $dateCreation = null;
 
     #[ORM\ManyToOne(inversedBy: 'reviews')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
     // Getters et setters (inchangés)

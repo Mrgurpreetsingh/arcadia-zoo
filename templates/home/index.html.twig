@@ -1,8 +1,122 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
-
 {% block body %}
-    <h1>Bienvenue au Zoo Arcadia</h1>
-    <p>Page d'accueil temporaire.</p>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo" style="background-color: #143F27; color: #CF9546;">Arcadia Zoo</div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Animaux</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Habitats</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Connexion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="lion.webp" alt="Lion" class="hero-image">
+        <div class="hero-text">
+            <h1 style="font-family: Quicksand; font-size: 39.8px; font-weight: 600;">Bienvenue au Zoo Arcadia</h1>
+            <h2 style="font-family: Quicksand; font-size: 31.2px; font-weight: 600;">Une aventure éco-responsable vous attend</h2>
+            <a href="#" class="btn" style="background-color: #537D5D;">Découvrir nos habitats</a>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="introduction">
+        <h2 style="font-family: Quicksand; font-size: 31.2px; font-weight: 600;">Arcadia, le zoo éco-responsable</h2>
+        <p style="font-family: Open Sans; font-size: 16px; font-weight: 400;">Situé au cœur de la nature, Arcadia Zoo protège la biodiversité avec des habitats conçus pour le bien-être animal. Venez découvrir nos animaux et services uniques !</p>
+        <a href="#" class="btn" style="background-color: #73946B;">En savoir plus</a>
+    </section>
+
+    <!-- Habitats Section -->
+    <section class="habitats">
+        <h2 style="font-family: Quicksand; font-size: 31.2px; font-weight: 600;">Explorez nos habitats</h2>
+        <div class="cards">
+            <div class="card">
+                <img src="savane.webp" alt="Savane" class="card-image">
+                <h3 style="font-family: Poppins; font-size: 25px; font-weight: 600;">Savane</h3>
+                <p style="font-family: Open Sans; font-size: 16px; font-weight: 400;">Découvrez la faune africaine.</p>
+                <a href="#" class="btn" style="background-color: #73946B;">Voir plus</a>
+            </div>
+            <div class="card">
+                <img src="jungle.webp" alt="Jungle" class="card-image">
+                <h3 style="font-family: Poppins; font-size: 25px; font-weight: 600;">Jungle</h3>
+                <p style="font-family: Open Sans; font-size: 16px; font-weight: 400;">Explorez la richesse tropicale.</p>
+                <a href="#" class="btn" style="background-color: #73946B;">Voir plus</a>
+            </div>
+            <div class="card">
+                <img src="marais.webp" alt="Marais" class="card-image">
+                <h3 style="font-family: Poppins; font-size: 25px; font-weight: 600;">Marais</h3>
+                <p style="font-family: Open Sans; font-size: 16px; font-weight: 400;">Découvrez les zones humides.</p>
+                <a href="#" class="btn" style="background-color: #73946B;">Voir plus</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <h2 style="font-family: Quicksand; font-size: 31.2px; font-weight: 600;">Nos services pour vous</h2>
+        <div class="cards">
+            <div class="card">
+                <div class="icon" style="background-color: #537D5D;">🍽️</div>
+                <h3 style="font-family: Poppins; font-size: 25px; font-weight: 600;">Restauration</h3>
+                <p style="font-family: Open Sans; font-size: 16px; font-weight: 400;">Savourez nos plats locaux.</p>
+                <a href="#" class="btn" style="background-color: #73946B;">Tous les services</a>
+            </div>
+            <div class="card">
+                <div class="icon" style="background-color: #537D5D;">🧭</div>
+                <h3 style="font-family: Poppins; font-size: 25px; font-weight: 600;">Visite guidée</h3>
+                <p style="font-family: Open Sans; font-size: 16px; font-weight: 400;">Explorez avec un guide.</p>
+                <a href="#" class="btn" style="background-color: #73946B;">Tous les services</a>
+            </div>
+            <div class="card">
+                <div class="icon" style="background-color: #537D5D;">🛒</div>
+                <h3 style="font-family: Poppins; font-size: 25px; font-weight: 600;">Boutique</h3>
+                <p style="font-family: Open Sans; font-size: 16px; font-weight: 400;">Souvenirs uniques.</p>
+                <a href="#" class="btn" style="background-color: #73946B;">Tous les services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Avis Section -->
+    <section class="avis">
+        <h2 style="font-family: Quicksand; font-size: 31.2px; font-weight: 600;">Ce que disent nos visiteurs</h2>
+        <div class="reviews">
+            <div class="review">
+                <h4 style="font-family: Poppins; font-size: 20px; font-weight: 500;">JeanD</h4>
+                <p style="font-family: Open Sans; font-size: 16px; font-weight: 400;">Super expérience, les habitats sont magnifiques!</p>
+                <small style="font-family: Open Sans; font-size: 13px; font-weight: 400;">25/05/2025</small>
+            </div>
+            <!-- Add more reviews as needed -->
+        </div>
+    </section>
+
+    <!-- Call-to-Action -->
+    <section class="cta">
+        <h3 style="font-family: Poppins; font-size: 25px; font-weight: 600;">Une question ? Contactez-nous !</h3>
+        <a href="#" class="btn" style="background-color: #537D5D;">Envoyer un message</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" style="background-color: #143F27; color: white;">
+        <div class="logo">Arcadia Zoo</div>
+        <ul>
+            <li><a href="#">Habitats</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">À propos</a></li>
+        </ul>
+        <p style="font-family: Open Sans; font-size: 13px; font-weight: 400;">© 2025 Arcadia Zoo. RGPD. Cookies.</p>
+    </footer>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" style="background-color: #EFF3EB; color: #2F3E34;">
+        <p>Nous utilisons des cookies. <a href="#" style="color: #537D5D;">En savoir plus</a></p>
+        <button style="background-color: #537D5D; color: white;">Accepter</button>
+    </div>
 {% endblock %}

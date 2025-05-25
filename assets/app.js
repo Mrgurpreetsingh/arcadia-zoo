@@ -1,5 +1,4 @@
+// assets/app.js
 import './styles/app.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-console.log('Webpack Encore is working!');
+// Pas besoin d'importer les JS d'EasyAdmin ici, ils seront inclus via le template
+import './css/admin.css';

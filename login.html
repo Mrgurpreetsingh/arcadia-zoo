@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion</title>
+            <link rel="stylesheet" href="/build/app.css">
+        <link rel="stylesheet" href="/assets/bundles/easyadmin/app.62f32d02-a8feb3edafd7a085faa984dc1be682fc.css">
+    </head>
+<body>
+        <h1>Connexion</h1>
+
+    
+            <form method="post" action="/login" data-turbo="false">
+            <div>
+                <label for="email">Email</label>
+                <input type="email" value="" name="email" id="email" autocomplete="email" required autofocus>
+            </div>
+            <div>
+                <label for="password">Mot de passe</label>
+                <input type="password" name="password" id="password" autocomplete="current-password" required>
+            </div>
+
+            <input type="hidden" name="_csrf_token" value="0dab90a128c58831d8d.coZnegmZiQRvzLfemAjxTph-5p9Aqmkzqn1J2w9ccX8.PfEBTySt5lYetvqx_UaWOu0Zofp2kyUEnBEdqHltMwYg4REfXsGkNgSO8g">
+
+            <button type="submit">Se connecter</button>
+        </form>
+                <script src="/build/runtime.js" defer></script><script src="/build/app.js" defer></script>
+        <script src="/assets/bundles/easyadmin/app.1ecd6d7a-eaf5c0e4bfddec9910ccde0558fc8744.js"></script>
+    </body>
+</html>

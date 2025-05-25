@@ -1,0 +1,154 @@
+body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #EFF3EB;
+    color: #2F3E34;
+}
+
+.header {
+    background-color: #143F27;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #CF9546;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
+.hero {
+    position: relative;
+    text-align: center;
+    background-color: #EFF3EB;
+}
+
+.hero-image {
+    width: 100%;
+    max-width: 1440px;
+    height: auto;
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #2F3E34;
+}
+
+.hero-text h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 39.8px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.hero-text h2 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 31.2px;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #537D5D;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #9EBC8A;
+}
+
+.footer {
+    background-color: #143F27;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer .logo {
+    margin-bottom: 10px;
+}
+
+.footer ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
+.footer p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    margin: 10px 0 0;
+}
+
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #EFF3EB;
+    color: #2F3E34;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cookie-banner p {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+}
+
+.cookie-banner a {
+    color: #537D5D;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .navbar ul {
+        display: none;
+    }
+    .hero-image {
+        height: 300px;
+    }
+}

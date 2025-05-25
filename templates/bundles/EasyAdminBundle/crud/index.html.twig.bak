@@ -1,0 +1,10 @@
+{% extends '@EasyAdmin/crud/index.html.twig' %}
+
+{% block content_title %}Liste des Avis{% endblock %}
+
+{% block main %}
+    {{ parent() }}
+    <div class="ea-index">
+        <p>Interface CRUD pour les avis (template personnalisé)</p>
+    </div>
+{% endblock %}

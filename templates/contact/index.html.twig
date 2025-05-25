@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">Arcadia Zoo</div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="{{ path('app_home') }}">Accueil</a></li>
+                <li><a href="{{ path('app_animals') }}">Animaux</a></li>
+                <li><a href="{{ path('app_services') }}">Services</a></li>
+                <li><a href="{{ path('app_habitats') }}">Habitats</a></li>
+                <li><a href="{{ path('app_contact') }}">Contact</a></li>
+                <li><a href="{{ path('app_login') }}">Connexion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="nature.webp" alt="Nature" class="hero-image">
+        <div class="hero-text">
+            <h1>Contactez-nous</h1>
+            <h2>Une question ? Écrivez-nous !</h2>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form">
+        <form method="post" action="{{ path('app_contact_submit') }}">
+            <div class="form-group">
+                <label for="title">Titre</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <button type="submit" class="btn">Envoyer</button>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('contact_form') }}">
+        </form>
+        <small>Conformité RGPD : Vos données sont protégées.</small>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="logo">Arcadia Zoo</div>
+        <ul>
+            <li><a href="{{ path('app_habitats') }}">Habitats</a></li>
+            <li><a href="{{ path('app_services') }}">Services</a></li>
+            <li><a href="{{ path('app_contact') }}">Contact</a></li>
+            <li><a href="{{ path('app_about') }}">À propos</a></li>
+        </ul>
+        <p>© 2025 Arcadia Zoo. RGPD. Cookies.</p>
+    </footer>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner">
+        <p>Nous utilisons des cookies. <a href="#">En savoir plus</a></p>
+        <button>Accepter</button>
+    </div>
+{% endblock %}

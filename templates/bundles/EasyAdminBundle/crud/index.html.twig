@@ -1,0 +1,9 @@
+{% extends '@EasyAdmin/crud/index.html.twig' %}
+{% block head_css %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('app') }}
+{% endblock %}
+{% block body_javascript %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}

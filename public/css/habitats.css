@@ -1,0 +1,44 @@
+.habitat-list {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #EFF3EB;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    background-color: #D2D0A0;
+    padding: 10px;
+    width: 30%;
+    text-align: center;
+}
+
+.card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.card p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
+    }
+}

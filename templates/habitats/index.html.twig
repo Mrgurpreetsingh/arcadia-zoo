@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Habitats - Zoo Arcadia{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/habitats.css') }}">
+{% endblock %}
+
+{% block body %}
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">Arcadia Zoo</div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="{{ path('app_home') }}">Accueil</a></li>
+                <li><a href="{{ path('app_animals') }}">Animaux</a></li>
+                <li><a href="{{ path('app_services') }}">Services</a></li>
+                <li><a href="{{ path('app_habitats') }}">Habitats</a></li>
+                <li><a href="{{ path('app_contact') }}">Contact</a></li>
+                <li><a href="{{ path('app_login') }}">Connexion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="{{ asset('img/savane.webp') }}" alt="Savane" class="hero-image">
+        <div class="hero-text">
+            <h1>Nos Habitats</h1>
+            <h2>Des écosystèmes préservés</h2>
+        </div>
+    </section>
+
+    <!-- Habitat List -->
+    <section class="habitat-list">
+        <div class="cards">
+            <div class="card">
+                <img src="{{ asset('img/savane.webp') }}" alt="Savane" class="card-image">
+                <h3>Savane</h3>
+                <p>Découvrez la faune africaine.</p>
+                <a href="{{ path('app_habitat_detail', {'id': 1}) }}" class="btn">Voir détails</a>
+            </div>
+            <!-- Ajoute d'autres cartes dynamiquement plus tard -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="logo">Arcadia Zoo</div>
+        <ul>
+            <li><a href="{{ path('app_habitats') }}">Habitats</a></li>
+            <li><a href="{{ path('app_services') }}">Services</a></li>
+            <li><a href="{{ path('app_contact') }}">Contact</a></li>
+            <li><a href="{{ path('app_about') }}">À propos</a></li>
+        </ul>
+        <p>© 2025 Arcadia Zoo. RGPD. Cookies.</p>
+    </footer>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner">
+        <p>Nous utilisons des cookies. <a href="#">En savoir plus</a></p>
+        <button>Accepter</button>
+    </div>
+{% endblock %}
