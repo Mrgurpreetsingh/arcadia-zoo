@@ -27,7 +27,6 @@ class AppAuthenticator extends AbstractLoginFormAuthenticator
         private UrlGeneratorInterface $urlGenerator,
         private LoggerInterface $logger
     ) {
-        // Utiliser un contexte pour le canal security
         $this->logger = $logger;
     }
 
@@ -48,24 +47,25 @@ class AppAuthenticator extends AbstractLoginFormAuthenticator
 
     public function authenticate(Request $request): Passport
     {
-        $email = $request->getPayload()->getString('email');
-        $password = $request->getPayload()->getString('password');
-        $csrfToken = $request->getPayload()->getString('_csrf_token');
+        $email = $request->request->get('email', '');
+        $password = $request->request->get('password', '');
+        $csrfToken = $request->request->get('_csrf_token', '');
 
         $this->logger->debug('Authenticating user', [
             'email' => $email,
             'password' => $password ? '[provided]' : '[empty]',
             'csrf_token' => $csrfToken,
-            'payload' => $request->getPayload()->all(),
+            'payload' => $request->request->all(),
         ]);
 
         $request->getSession()->set(SecurityRequestAttributes::LAST_USERNAME, $email);
 
         return new Passport(
             new UserBadge($email),
-            new PasswordCredentials($password)
-            // CSRF désactivé temporairement
-            // [new CsrfTokenBadge('authenticate', $csrfToken)]
+            new PasswordCredentials($password),
+            [
+                new CsrfTokenBadge('authenticate', $csrfToken),
+            ]
         );
     }
 
@@ -79,6 +79,15 @@ class AppAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
 
+        $roles = $token->getRoleNames();
+        if (in_array('ROLE_ADMIN', $roles)) {
+            return new RedirectResponse($this->urlGenerator->generate('admin'));
+        } elseif (in_array('ROLE_VET', $roles)) {
+            return new RedirectResponse($this->urlGenerator->generate('vet'));
+        } elseif (in_array('ROLE_EMPLOYEE', $roles)) {
+            return new RedirectResponse($this->urlGenerator->generate('employee'));
+        }
+
         return new RedirectResponse($this->urlGenerator->generate('app_home'));
     }
 
@@ -86,7 +95,7 @@ class AppAuthenticator extends AbstractLoginFormAuthenticator
     {
         $this->logger->error('Authentication failed', [
             'error' => $exception->getMessage(),
-            'email' => $request->getPayload()->getString('email'),
+            'email' => $request->request->get('email'),
         ]);
 
         return parent::onAuthenticationFailure($request, $exception);

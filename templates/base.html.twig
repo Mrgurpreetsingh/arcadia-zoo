@@ -1,18 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Arcadia Zoo Admin{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zoo Arcadia - Découvrez nos animaux, habitats et services éco-responsables">
+    <meta name="robots" content="{% if app.request.pathinfo starts with '/admin' %}noindex{% else %}index, follow{% endif %}">
+    <title>{% block title %}Arcadia Zoo{% endblock %}</title>
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
-        <link rel="stylesheet" href="{{ asset('bundles/easyadmin/app.62f32d02.css') }}">
+        {% if app.request.pathinfo starts with '/admin' %}
+            <link rel="stylesheet" href="{{ asset('bundles/easyadmin/app.62f32d02.css') }}">
+        {% endif %}
     {% endblock %}
 </head>
 <body>
     {% block body %}{% endblock %}
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
-        <script src="{{ asset('bundles/easyadmin/app.1ecd6d7a.js') }}"></script>
+        {% if app.request.pathinfo starts with '/admin' %}
+            <script src="{{ asset('bundles/easyadmin/app.1ecd6d7a.js') }}"></script>
+        {% endif %}
     {% endblock %}
 </body>
 </html>

@@ -44,8 +44,7 @@ body {
 
 .hero-image {
     width: 100%;
-    max-width: 1440px;
-    height: auto;
+    height: 70%;
 }
 
 .hero-text {
@@ -53,7 +52,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #2F3E34;
+    color: #fff;
 }
 
 .hero-text h1 {

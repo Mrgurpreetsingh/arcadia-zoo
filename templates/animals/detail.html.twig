@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de l'animal - Zoo Arcadia{% endblock %}
+
+{% block body %}
+    <h1>Détails de l'animal (ID: {{ animal_id }})</h1>
+    <p>Cette page affichera les détails de l'animal avec l'ID {{ animal_id }}.</p>
+    <a href="{{ path('app_animals') }}" class="btn">Retour à la liste</a>
+{% endblock %}

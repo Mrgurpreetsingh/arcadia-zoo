@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de l'Habitat - Zoo Arcadia{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/habitats.css') }}">
+{% endblock %}
+
+{% block body %}
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">Arcadia Zoo</div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="{{ path('app_home') }}">Accueil</a></li>
+                <li><a href="{{ path('app_animals') }}">Animaux</a></li>
+                <li><a href="{{ path('app_services') }}">Services</a></li>
+                <li><a href="{{ path('app_habitats') }}">Habitats</a></li>
+                <li><a href="{{ path('app_contact') }}">Contact</a></li>
+                <li><a href="{{ path('app_login') }}">Connexion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Habitat Detail -->
+    <section class="habitat-detail">
+        <img src="{{ asset('img/savane.webp') }}" alt="{{ habitat.name }}" class="main-image">
+        <h1>{{ habitat.name }}</h1>
+        <h3>Description</h3>
+        <p>{{ habitat.description }}</p>
+        <h3>Animaux associés</h3>
+        <div class="animals">
+            {% for animal in habitat.animals %}
+                <div class="animal-card">
+                    <h4>{{ animal.name }}</h4>
+                    <p>{{ animal.race }}</p>
+                    <!-- Ajoute un lien vers la page de détail de l'animal si nécessaire -->
+                </div>
+            {% endfor %}
+        </div>
+        <a href="{{ path('app_habitats') }}" class="btn back-btn">Retour</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="logo">Arcadia Zoo</div>
+        <ul>
+            <li><a href="{{ path('app_habitats') }}">Habitats</a></li>
+            <li><a href="{{ path('app_services') }}">Services</a></li>
+            <li><a href="{{ path('app_contact') }}">Contact</a></li>
+            <li><a href="{{ path('app_about') }}">À propos</a></li>
+        </ul>
+        <p>© 2025 Arcadia Zoo. RGPD. Cookies.</p>
+    </footer>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner">
+        <p>Nous utilisons des cookies. <a href="#">En savoir plus</a></p>
+        <button>Accepter</button>
+    </div>
+{% endblock %}

@@ -13,3 +13,7 @@ when@test:
         test: true
         session:
             storage_factory_id: session.storage.factory.mock_file
+            cookie_lifetime: 604800  # 7 jours en secondes (7 * 24 * 60 * 60)
+            gc_maxlifetime: 604800   # Durée de vie maximale des données de session côté serveur
+            cookie_secure: auto      # Utiliser HTTPS si disponible
+            cookie_samesite: lax     # Protection contre les attaques CSRF

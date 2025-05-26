@@ -1,33 +1,84 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Connexion{% endblock %}
+{% block title %}Connexion - Zoo Arcadia{% endblock %}
 
 {% block body %}
-    <h1>Connexion</h1>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">Arcadia Zoo</div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="{{ path('app_home') }}">Accueil</a></li>
+                <li><a href="{{ path('app_animals') }}">Animaux</a></li>
+                <li><a href="{{ path('app_services') }}">Services</a></li>
+                <li><a href="{{ path('app_habitats') }}">Habitats</a></li>
+                <li><a href="{{ path('app_contact') }}">Contact</a></li>
+                <li><a href="{{ path('app_login') }}">Connexion</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    {% if error %}
-        <div style="color: red;">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
-
-    {% if app.user %}
-        <div>
-            Connecté en tant que {{ app.user.userIdentifier }}.
-            <a href="{{ path('app_logout') }}">Se déconnecter</a>
+    <!-- Hero Section -->
+    <section class="hero">
+        <picture>
+            <source srcset="{{ asset('img/green-forest.webp') }}" type="image/webp">
+            <img src="{{ asset('img/green-forest.png') }}" alt="Forêt verte" class="hero-image">
+        </picture>
+        <div class="hero-text">
+            <h1>Connexion</h1>
+            <h2>Accédez à votre espace</h2>
         </div>
-    {% else %}
-        <form method="post" action="{{ path('app_login') }}" data-turbo="false">
-            <div>
-                <label for="email">Email</label>
-                <input type="email" value="{{ last_username }}" name="email" id="email" autocomplete="email" required autofocus>
-            </div>
-            <div>
-                <label for="password">Mot de passe</label>
-                <input type="password" name="password" id="password" autocomplete="current-password" required>
-            </div>
+    </section>
 
-            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+    <!-- Login Form -->
+    <section class="login-form">
+        {% if error %}
+            <div class="alert-danger">
+                {{ error.messageKey|trans(error.messageData, 'security') }}
+            </div>
+        {% endif %}
 
-            <button type="submit">Se connecter</button>
-        </form>
-    {% endif %}
+        {% if app.user %}
+            <div>
+                Connecté en tant que {{ app.user.email }}.
+                <a href="{{ path('app_logout') }}">Se déconnecter</a>
+            </div>
+        {% else %}
+            <form method="post" action="{{ path('app_login') }}" data-turbo="false">
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" value="{{ last_username }}" name="email" id="email" class="form-control" autocomplete="email" required autofocus>
+                </div>
+                <div>
+                    <label for="password">Mot de passe</label>
+                    <input type="password" name="password" id="password" class="form-control" autocomplete="current-password" required>
+                </div>
+
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                <button type="submit" class="btn">Se connecter</button>
+            </form>
+            <p>
+                Pas encore inscrit ? Contactez un administrateur.
+            </p>
+        {% endif %}
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="logo">Arcadia Zoo</div>
+        <ul>
+            <li><a href="{{ path('app_habitats') }}">Habitats</a></li>
+            <li><a href="{{ path('app_services') }}">Services</a></li>
+            <li><a href="{{ path('app_contact') }}">Contact</a></li>
+            <li><a href="{{ path('app_about') }}">À propos</a></li>
+        </ul>
+        <p>© 2025 Arcadia Zoo. RGPD. Cookies.</p>
+    </footer>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner">
+        <p>Nous utilisons des cookies. <a href="#">En savoir plus</a></p>
+        <button>Accepter</button>
+    </div>
 {% endblock %}
