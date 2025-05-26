@@ -1,5 +1,8 @@
-App\Controller\Admin:
+admin_controllers:
     resource: ../src/Controller/Admin/
     type: attribute
+
+easyadmin_routes:
     resource: routes/easyadmin.php
-    #prefix: /admin  
+    type: php
+    #prefix: /admin
