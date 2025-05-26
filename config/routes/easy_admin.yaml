@@ -1,0 +1,8 @@
+admin:
+    path: /admin
+    controller: App\Controller\Admin\DashboardController::index
+
+easy_admin:
+    resource: '../../src/Controller/Admin/'
+    type: attribute
+    prefix: /admin

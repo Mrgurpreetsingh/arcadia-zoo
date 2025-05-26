@@ -1,9 +1,8 @@
 twig:
-    debug: '%kernel.debug%'
+    debug: false
     strict_variables: '%kernel.debug%'
     exception_controller: null
     file_name_pattern: '*.twig'
-
 when@test:
     twig:
         strict_variables: true

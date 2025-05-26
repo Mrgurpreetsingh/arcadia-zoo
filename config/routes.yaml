@@ -1,4 +1,5 @@
 App\Controller\Admin:
     resource: ../src/Controller/Admin/
     type: attribute
-    # prefix: /admin  <-- supprimer ce prefix
+    resource: routes/easyadmin.php
+    #prefix: /admin  

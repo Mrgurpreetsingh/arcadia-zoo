@@ -3,12 +3,13 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Animal;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
+
+
 
 class AnimalCrudController extends AbstractCrudController
 {
@@ -24,15 +25,15 @@ class AnimalCrudController extends AbstractCrudController
             TextField::new('prenom', 'Prénom'),
             TextField::new('race', 'Race'),
             ImageField::new('images', 'Images')
-                ->setBasePath('uploads/images/')
-                ->setUploadDir('public/uploads/images/')
+                ->setBasePath('img/')
+                ->setUploadDir('public/img/')
                 ->setUploadedFileNamePattern('[randomhash].[extension]')
                 ->setRequired(false),
-            AssociationField::new('habitat', 'Habitat'),
-            CollectionField::new('veterinaryReports', 'Rapports vétérinaires')
-                ->onlyOnDetail(),
-            CollectionField::new('foodConsumptions', 'Consommations alimentaires')
-                ->onlyOnDetail(),
         ];
     }
+    public function configureCrud(Crud $crud): Crud
+{
+    return $crud
+        ->setPaginatorPageSize(20); // ajuste si besoin
+}
 }
