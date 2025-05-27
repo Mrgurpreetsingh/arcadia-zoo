@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\AnimalConsultation;
+/*use App\Entity\AnimalConsultation;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -23,4 +23,4 @@ class AnimalConsultationCrudController extends AbstractCrudController
             IntegerField::new('consultationCount', 'Nombre de consultations'),
         ];
     }
-}
+}*/

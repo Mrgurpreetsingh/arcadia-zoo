@@ -2,6 +2,11 @@
 
 {% block title %}Habitats - Zoo Arcadia{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }} <!-- Conserve common.css et EasyAdmin si applicable -->
+    <link rel="stylesheet" href="{{ asset('css/habitats.css') }}"> <!-- CSS spécifique à la page Habitats -->
+{% endblock %}
+
 {% block body %}
     <!-- Header -->
     <header class="header">

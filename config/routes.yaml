@@ -1,8 +1,7 @@
 admin_controllers:
-    resource: ../src/Controller/Admin/
+    resource: '%kernel.project_dir%/src/Controller/Admin/'
     type: attribute
 
-easyadmin_routes:
-    resource: routes/easyadmin.php
-    type: php
-    #prefix: /admin
+easy_admin:
+    resource: '@EasyAdminBundle/Controller/'
+    type: annotation

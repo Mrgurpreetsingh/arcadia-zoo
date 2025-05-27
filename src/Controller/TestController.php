@@ -2,14 +2,15 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class TestController
+class TestController extends AbstractController
 {
-    #[Route('/test-route', name: 'test_route')]
+    #[Route('/twig-test', name: 'twig_test')]
     public function index(): Response
     {
-        return new Response('Test Route');
+        return $this->render('test.html.twig');
     }
 }

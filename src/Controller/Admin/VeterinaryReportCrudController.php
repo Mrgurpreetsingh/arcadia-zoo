@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\VeterinaryReport;
+/*use App\Entity\VeterinaryReport;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -31,4 +31,4 @@ class VeterinaryReportCrudController extends AbstractCrudController
             AssociationField::new('user', 'Utilisateur'),
         ];
     }
-}
+}*/

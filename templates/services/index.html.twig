@@ -2,6 +2,11 @@
 
 {% block title %}Services - Zoo Arcadia{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }} <!-- Conserve common.css et EasyAdmin si applicable -->
+    <link rel="stylesheet" href="{{ asset('css/services.css') }}"> <!-- CSS spécifique à la page Services -->
+{% endblock %}
+
 {% block body %}
     <!-- Header -->
     <header class="header">

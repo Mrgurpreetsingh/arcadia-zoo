@@ -2,6 +2,11 @@
 
 {% block title %}Accueil - Zoo Arcadia{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }} <!-- Conserve common.css et EasyAdmin si applicable -->
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}"> <!-- CSS spécifique à la page d'accueil -->
+{% endblock %}
+
 {% block body %}
     <!-- Header -->
     <header class="header">

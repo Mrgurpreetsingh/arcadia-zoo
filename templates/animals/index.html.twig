@@ -2,6 +2,11 @@
 
 {% block title %}Animaux - Zoo Arcadia{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }} <!-- Conserve common.css et EasyAdmin si applicable -->
+    <link rel="stylesheet" href="{{ asset('css/animals.css') }}"> <!-- CSS spécifique à la page Animaux -->
+{% endblock %}
+
 {% block body %}
     <!-- Header -->
     <header class="header">

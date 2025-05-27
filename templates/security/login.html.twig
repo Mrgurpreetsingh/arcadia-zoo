@@ -2,6 +2,11 @@
 
 {% block title %}Connexion - Zoo Arcadia{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }} <!-- Conserve common.css et EasyAdmin si applicable -->
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}"> <!-- CSS spécifique à la page Connexion -->
+{% endblock %}
+
 {% block body %}
     <!-- Header -->
     <header class="header">

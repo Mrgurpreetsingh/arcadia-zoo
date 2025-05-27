@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\User;
+/*use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
@@ -19,10 +19,12 @@ class UserCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
+        dump($pageName); // 👈 pour voir si la méthode est bien atteinte
+    exit;            // 👈 pour stopper l’exécution juste après
         return [
             IdField::new('id')->hideOnForm(),
             EmailField::new('email', 'Email'),
-            ArrayField::new('roles', 'Rôles'),
+           // ArrayField::new('roles', 'Rôles'),
             ChoiceField::new('role', 'Rôle')
                 ->setChoices([
                     'Admin' => 'admin',
@@ -37,4 +39,4 @@ class UserCrudController extends AbstractCrudController
                 ->onlyOnDetail(),
         ];
     }
-}
+}*/

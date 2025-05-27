@@ -1,5 +1,12 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Contact - Zoo Arcadia{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }} <!-- Conserve common.css et EasyAdmin si applicable -->
+    <link rel="stylesheet" href="{{ asset('css/contact.css') }}"> <!-- CSS spécifique à la page Contact -->
+{% endblock %}
+
 {% block body %}
     <!-- Header -->
     <header class="header">

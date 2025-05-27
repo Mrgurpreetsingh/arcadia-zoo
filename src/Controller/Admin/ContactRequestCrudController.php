@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\ContactRequest;
+/*use App\Entity\ContactRequest;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -25,4 +25,4 @@ class ContactRequestCrudController extends AbstractCrudController
             EmailField::new('email', 'Email'),
         ];
     }
-}
+}*/
