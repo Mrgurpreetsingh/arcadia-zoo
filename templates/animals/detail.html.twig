@@ -23,15 +23,89 @@
         </nav>
     </header>
 
-    <!-- Animal Detail -->
-    <section class="animal-detail">
-        <img src="{{ animal.images ? asset(animal.images) : asset('img/lion.webp') }}" alt="{{ animal.prenom }}" class="main-image">
-        <h1>{{ animal.prenom }}</h1>
-        <h3>Race: {{ animal.race }}</h3>
-        {% if animal.habitat %}
-        <p><strong>Habitat:</strong> <a href="{{ path('app_habitat_detail', {'id': animal.habitat.id}) }}">{{ animal.habitat.nom }}</a></p>
-        {% endif %}
-        <a href="{{ path('app_animals') }}" class="btn back-btn">Retour à la liste</a>
+    <!-- Hero Banner -->
+    <section class="animal-hero">
+        <img src="{{ animal.images ? asset(animal.images) : asset('img/lion.webp') }}" alt="{{ animal.prenom }}" class="hero-bg">
+        <div class="hero-overlay">
+            <h1>{{ animal.prenom }}</h1>
+            <span class="animal-race">{{ animal.race }}</span>
+        </div>
+    </section>
+
+    <!-- Animal Detail Content -->
+    <section class="animal-detail-content">
+        <div class="detail-container">
+            <!-- Main Info Card -->
+            <div class="info-card main-card">
+                <div class="card-header">
+                    <span class="icon">🦁</span>
+                    <h2>Fiche d'identité</h2>
+                </div>
+                <div class="card-body">
+                    <div class="info-row">
+                        <span class="label">Prénom</span>
+                        <span class="value">{{ animal.prenom }}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Espèce</span>
+                        <span class="value">{{ animal.race }}</span>
+                    </div>
+                    {% if animal.habitat %}
+                    <div class="info-row">
+                        <span class="label">Habitat</span>
+                        <span class="value">
+                            <a href="{{ path('app_habitat_detail', {'id': animal.habitat.id}) }}" class="habitat-link">
+                                {{ animal.habitat.nom }}
+                            </a>
+                        </span>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Habitat Card -->
+            {% if animal.habitat %}
+            <div class="info-card habitat-card">
+                <div class="card-header">
+                    <span class="icon">🌿</span>
+                    <h2>Son habitat</h2>
+                </div>
+                <div class="card-body">
+                    <img src="{{ animal.habitat.images ? asset(animal.habitat.images) : asset('img/savane.webp') }}" alt="{{ animal.habitat.nom }}" class="habitat-preview">
+                    <h3>{{ animal.habitat.nom }}</h3>
+                    <p>{{ animal.habitat.description|slice(0, 150) }}{% if animal.habitat.description|length > 150 %}...{% endif %}</p>
+                    <a href="{{ path('app_habitat_detail', {'id': animal.habitat.id}) }}" class="btn btn-secondary">Découvrir l'habitat</a>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Veterinary Reports -->
+            {% if animal.veterinaryReports|length > 0 %}
+            <div class="info-card health-card">
+                <div class="card-header">
+                    <span class="icon">🩺</span>
+                    <h2>État de santé</h2>
+                </div>
+                <div class="card-body">
+                    {% set lastReport = animal.veterinaryReports|last %}
+                    <div class="health-status {{ lastReport.etat|lower }}">
+                        <span class="status-badge">{{ lastReport.etat }}</span>
+                        <span class="status-date">{{ lastReport.datePassage|date('d/m/Y') }}</span>
+                    </div>
+                    {% if lastReport.details %}
+                    <p class="health-details">{{ lastReport.details|slice(0, 200) }}{% if lastReport.details|length > 200 %}...{% endif %}</p>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Back Button -->
+        <div class="actions">
+            <a href="{{ path('app_animals') }}" class="btn btn-back">
+                ← Retour à tous les animaux
+            </a>
+        </div>
     </section>
 
     <!-- Footer -->

@@ -42,3 +42,289 @@
         width: 100%;
     }
 }
+
+/* ========== Animal Detail Page ========== */
+
+/* Hero Banner */
+.animal-hero {
+    position: relative;
+    width: 100%;
+    height: 200px !important;
+    max-height: 200px !important;
+    overflow: hidden !important;
+    display: block;
+}
+
+.animal-hero .hero-bg,
+.animal-hero img {
+    width: 100% !important;
+    height: 200px !important;
+    max-height: 200px !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    filter: brightness(0.7);
+    display: block;
+}
+
+.animal-hero .hero-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: white;
+    text-align: center;
+}
+
+.animal-hero h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.animal-hero .animal-race {
+    font-size: 16px;
+    font-weight: 300;
+    opacity: 0.9;
+    background: #537D5D;
+    padding: 6px 16px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+/* Detail Content */
+.animal-detail-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: #EFF3EB;
+}
+
+.detail-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+/* Info Cards */
+.info-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+}
+
+.info-card .card-header {
+    background: #537D5D;
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.info-card .card-header .icon {
+    font-size: 28px;
+}
+
+.info-card .card-header h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.info-card .card-body {
+    padding: 25px;
+}
+
+/* Info Rows */
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-row .label {
+    font-weight: 600;
+    color: #666;
+}
+
+.info-row .value {
+    font-size: 18px;
+    color: #333;
+}
+
+.habitat-link {
+    color: #537D5D;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.habitat-link:hover {
+    color: #3d5c44;
+    text-decoration: underline;
+}
+
+/* Habitat Card */
+.habitat-card .habitat-preview,
+.habitat-card img {
+    width: 100% !important;
+    height: 100px !important;
+    max-height: 100px !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.habitat-card h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.habitat-card p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Health Card */
+.health-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.status-badge {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    background: #28a745;
+    color: white;
+}
+
+.health-status.mauvais .status-badge {
+    background: #dc3545;
+}
+
+.health-status.moyen .status-badge {
+    background: #ffc107;
+    color: #333;
+}
+
+.status-date {
+    color: #666;
+    font-size: 14px;
+}
+
+.health-details {
+    color: #666;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+/* Buttons */
+.btn-secondary {
+    display: inline-block;
+    background: #D2D0A0;
+    color: #333;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.btn-secondary:hover {
+    background: #c4c291;
+}
+
+.actions {
+    text-align: center;
+}
+
+.btn-back {
+    display: inline-block;
+    background: #537D5D;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.btn-back:hover {
+    background: #3d5c44;
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .animal-hero {
+        height: 150px !important;
+        max-height: 150px !important;
+    }
+
+    .animal-hero .hero-bg,
+    .animal-hero img {
+        height: 150px !important;
+        max-height: 150px !important;
+    }
+
+    .animal-hero h1 {
+        font-size: 24px;
+    }
+
+    .animal-hero .animal-race {
+        font-size: 14px;
+        padding: 4px 12px;
+    }
+
+    .animal-hero .hero-overlay {
+        padding: 15px;
+    }
+
+    .detail-container {
+        grid-template-columns: 1fr;
+    }
+
+    .info-card .card-header {
+        padding: 12px;
+    }
+
+    .info-card .card-body {
+        padding: 12px;
+    }
+
+    .habitat-card .habitat-preview {
+        height: 80px;
+    }
+}
