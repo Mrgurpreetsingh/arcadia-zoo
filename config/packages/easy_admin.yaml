@@ -1,5 +1,2 @@
 easy_admin:
     site_name: 'Arcadia Zoo Admin'
-    design:
-        templates:
-            layout: 'admin/layout_minimal.html.twig'

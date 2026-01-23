@@ -2,14 +2,12 @@
 
 namespace App\Controller\Admin;
 
-/*use App\Entity\Animal;
+use App\Entity\Animal;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
-
-
 
 class AnimalCrudController extends AbstractCrudController
 {
@@ -22,7 +20,7 @@ class AnimalCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('prenom', 'Prénom'),
+            TextField::new('prenom', 'Prenom'),
             TextField::new('race', 'Race'),
             ImageField::new('images', 'Images')
                 ->setBasePath('img/')
@@ -31,10 +29,9 @@ class AnimalCrudController extends AbstractCrudController
                 ->setRequired(false),
         ];
     }
+
     public function configureCrud(Crud $crud): Crud
-{
-    return $crud
-        ->setPaginatorPageSize(20); // ajuste si besoin
+    {
+        return $crud->setPaginatorPageSize(20);
+    }
 }
-}
-*/

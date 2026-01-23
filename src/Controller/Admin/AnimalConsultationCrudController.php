@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-/*use App\Entity\AnimalConsultation;
+use App\Entity\AnimalConsultation;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -19,8 +19,8 @@ class AnimalConsultationCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('animalName', 'Nom de l’animal'),
+            TextField::new('animalName', 'Nom de l\'animal'),
             IntegerField::new('consultationCount', 'Nombre de consultations'),
         ];
     }
-}*/
+}

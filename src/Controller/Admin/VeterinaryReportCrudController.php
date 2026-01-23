@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-/*use App\Entity\VeterinaryReport;
+use App\Entity\VeterinaryReport;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -22,13 +22,13 @@ class VeterinaryReportCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('etat', 'État'),
+            TextField::new('etat', 'Etat'),
             TextField::new('nourriture', 'Nourriture'),
-            IntegerField::new('quantite', 'Quantité'),
+            IntegerField::new('quantite', 'Quantite'),
             DateTimeField::new('datePassage', 'Date de passage'),
-            TextEditorField::new('details', 'Détails'),
+            TextEditorField::new('details', 'Details'),
             AssociationField::new('animal', 'Animal'),
             AssociationField::new('user', 'Utilisateur'),
         ];
     }
-}*/
+}

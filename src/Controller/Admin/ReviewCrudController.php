@@ -1,6 +1,6 @@
 <?php
 
-/*namespace App\Controller\Admin;
+namespace App\Controller\Admin;
 
 use App\Entity\Review;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -22,11 +22,11 @@ class ReviewCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-          //  TextField::new('pseudo', 'Pseudo'),
-           // TextEditorField::new('commentaire', 'Commentaire'),
-           // BooleanField::new('valide', 'Validé'),
-           // DateTimeField::new('dateCreation', 'Date de création'),
-           // AssociationField::new('user', 'Utilisateur'),
+            TextField::new('pseudo', 'Pseudo'),
+            TextEditorField::new('commentaire', 'Commentaire'),
+            BooleanField::new('valide', 'Valide'),
+            DateTimeField::new('dateCreation', 'Date de creation'),
+            AssociationField::new('user', 'Utilisateur'),
         ];
     }
-}*/
+}

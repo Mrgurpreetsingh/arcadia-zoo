@@ -24,18 +24,20 @@
 
     <!-- Habitat Detail -->
     <section class="habitat-detail">
-        <img src="{{ asset('img/savane.webp') }}" alt="{{ habitat.name }}" class="main-image">
-        <h1>{{ habitat.name }}</h1>
+        <img src="{{ habitat.images ? asset(habitat.images) : asset('img/savane.webp') }}" alt="{{ habitat.nom }}" class="main-image">
+        <h1>{{ habitat.nom }}</h1>
         <h3>Description</h3>
         <p>{{ habitat.description }}</p>
         <h3>Animaux associés</h3>
         <div class="animals">
             {% for animal in habitat.animals %}
                 <div class="animal-card">
-                    <h4>{{ animal.name }}</h4>
+                    <h4>{{ animal.prenom }}</h4>
                     <p>{{ animal.race }}</p>
-                    <!-- Ajoute un lien vers la page de détail de l'animal si nécessaire -->
+                    <a href="{{ path('app_animal_detail', {'id': animal.id}) }}" class="btn">Voir</a>
                 </div>
+            {% else %}
+                <p>Aucun animal dans cet habitat.</p>
             {% endfor %}
         </div>
         <a href="{{ path('app_habitats') }}" class="btn back-btn">Retour</a>

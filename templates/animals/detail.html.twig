@@ -1,9 +1,48 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Détails de l'animal - Zoo Arcadia{% endblock %}
+{% block title %}{{ animal.prenom }} - Zoo Arcadia{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/animals.css') }}">
+{% endblock %}
 
 {% block body %}
-    <h1>Détails de l'animal (ID: {{ animal_id }})</h1>
-    <p>Cette page affichera les détails de l'animal avec l'ID {{ animal_id }}.</p>
-    <a href="{{ path('app_animals') }}" class="btn">Retour à la liste</a>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">Arcadia Zoo</div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="{{ path('app_home') }}">Accueil</a></li>
+                <li><a href="{{ path('app_animals') }}">Animaux</a></li>
+                <li><a href="{{ path('app_services') }}">Services</a></li>
+                <li><a href="{{ path('app_habitats') }}">Habitats</a></li>
+                <li><a href="{{ path('app_contact') }}">Contact</a></li>
+                <li><a href="{{ path('app_login') }}">Connexion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Animal Detail -->
+    <section class="animal-detail">
+        <img src="{{ animal.images ? asset(animal.images) : asset('img/lion.webp') }}" alt="{{ animal.prenom }}" class="main-image">
+        <h1>{{ animal.prenom }}</h1>
+        <h3>Race: {{ animal.race }}</h3>
+        {% if animal.habitat %}
+        <p><strong>Habitat:</strong> <a href="{{ path('app_habitat_detail', {'id': animal.habitat.id}) }}">{{ animal.habitat.nom }}</a></p>
+        {% endif %}
+        <a href="{{ path('app_animals') }}" class="btn back-btn">Retour à la liste</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="logo">Arcadia Zoo</div>
+        <ul>
+            <li><a href="{{ path('app_habitats') }}">Habitats</a></li>
+            <li><a href="{{ path('app_services') }}">Services</a></li>
+            <li><a href="{{ path('app_contact') }}">Contact</a></li>
+            <li><a href="{{ path('app_about') }}">À propos</a></li>
+        </ul>
+        <p>© 2025 Arcadia Zoo. RGPD. Cookies.</p>
+    </footer>
 {% endblock %}

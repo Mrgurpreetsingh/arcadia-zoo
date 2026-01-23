@@ -35,13 +35,16 @@
     <!-- Habitat List -->
     <section class="habitat-list">
         <div class="cards">
+            {% for habitat in habitats %}
             <div class="card">
-                <img src="{{ asset('img/savane.webp') }}" alt="Savane" class="card-image">
-                <h3>Savane</h3>
-                <p>Découvrez la faune africaine.</p>
-                <a href="{{ path('app_habitat_detail', {'id': 1}) }}" class="btn">Voir détails</a>
+                <img src="{{ habitat.images ? asset(habitat.images) : asset('img/savane.webp') }}" alt="{{ habitat.nom }}" class="card-image">
+                <h3>{{ habitat.nom }}</h3>
+                <p>{{ habitat.description|slice(0, 100) }}{% if habitat.description|length > 100 %}...{% endif %}</p>
+                <a href="{{ path('app_habitat_detail', {'id': habitat.id}) }}" class="btn">Voir détails</a>
             </div>
-            <!-- Ajoute d'autres cartes dynamiquement plus tard -->
+            {% else %}
+            <p>Aucun habitat disponible pour le moment.</p>
+            {% endfor %}
         </div>
     </section>
 

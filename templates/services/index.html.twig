@@ -35,12 +35,15 @@
     <!-- Service List -->
     <section class="service-list">
         <div class="cards">
+            {% for service in services %}
             <div class="card">
-                <div class="icon" style="background-color: #537D5D;">🍽️</div>
-                <h3>Restauration</h3>
-                <p>Savourez nos plats locaux.</p>
+                <div class="icon" style="background-color: #537D5D;">🎯</div>
+                <h3>{{ service.nom }}</h3>
+                <p>{{ service.description|slice(0, 100) }}{% if service.description|length > 100 %}...{% endif %}</p>
             </div>
-            <!-- Ajoute d'autres cartes dynamiquement plus tard -->
+            {% else %}
+            <p>Aucun service disponible pour le moment.</p>
+            {% endfor %}
         </div>
     </section>
 

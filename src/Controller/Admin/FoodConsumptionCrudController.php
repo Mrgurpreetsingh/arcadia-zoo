@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-/*use App\Entity\FoodConsumption;
+use App\Entity\FoodConsumption;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
@@ -25,9 +25,9 @@ class FoodConsumptionCrudController extends AbstractCrudController
             DateField::new('date', 'Date'),
             TimeField::new('heure', 'Heure'),
             TextField::new('nourriture', 'Nourriture'),
-            IntegerField::new('quantite', 'Quantité'),
+            IntegerField::new('quantite', 'Quantite'),
             AssociationField::new('animal', 'Animal'),
             AssociationField::new('user', 'Utilisateur'),
         ];
     }
-}*/
+}

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\HabitatRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -9,25 +10,21 @@ use Symfony\Component\Routing\Annotation\Route;
 class HabitatController extends AbstractController
 {
     #[Route('/habitats', name: 'app_habitats')]
-    public function index(): Response
+    public function index(HabitatRepository $habitatRepository): Response
     {
-        return $this->render('habitats/index.html.twig');
+        $habitats = $habitatRepository->findAll();
+        return $this->render('habitats/index.html.twig', [
+            'habitats' => $habitats,
+        ]);
     }
 
     #[Route('/habitats/{id}', name: 'app_habitat_detail', requirements: ['id' => '\d+'])]
-    public function detail(int $id): Response
+    public function detail(int $id, HabitatRepository $habitatRepository): Response
     {
-        // Placeholder : À terme, tu récupéreras les données de l'habitat via une base de données
-        $habitat = [
-            'id' => $id,
-            'name' => 'Savane',
-            'description' => 'Un écosystème africain avec des lions, des éléphants, et plus encore.',
-            'animals' => [
-                ['name' => 'Lion', 'race' => 'Félin'],
-                ['name' => 'Éléphant', 'race' => 'Proboscidien'],
-            ],
-        ];
-
+        $habitat = $habitatRepository->find($id);
+        if (!$habitat) {
+            throw $this->createNotFoundException('Habitat non trouvé');
+        }
         return $this->render('habitats/detail.html.twig', [
             'habitat' => $habitat,
         ]);
